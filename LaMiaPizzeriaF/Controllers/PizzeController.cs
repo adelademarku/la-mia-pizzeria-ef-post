@@ -64,6 +64,25 @@ namespace LaMiaPizzeriaF.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using (PizzaContext db = new PizzaContext())
+            {
+                Pizza postToUpdate = db.Pizza.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                if (postToUpdate == null)
+                {
+                    return NotFound("La pizza non è stata trovata");
+                }
+
+                return View("Update", postToUpdate);
+            }
+
+        }
+
+
+
 
 
 
