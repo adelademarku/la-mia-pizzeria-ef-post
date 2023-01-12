@@ -7,7 +7,7 @@
 @model Pizza
 
 <div class="container">
-    <form asp-controller="Post" asp-action="Update" method="post">
+    <form asp-controller="Pizze" asp-action="Update" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
             <label>Id:</label>
@@ -38,6 +38,6 @@
             <input asp-for="Image" type="text" class="form-control" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Salva Modifiche al Post</button>
+        <button type="submit" class="btn btn-primary">Salva Modifiche alla pizza</button>
     </form>
 </div>

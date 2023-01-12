@@ -65,24 +65,28 @@ namespace LaMiaPizzeriaF.Controllers
 
 
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Pizza formData)
+        public IActionResult Update(Pizza formPizza)
         {
             if (!ModelState.IsValid)
             {
-                return View("Update", formData);
+                return View("Update", formPizza);
             }
 
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza postToUpdate = db.Pizza.Where(articolo => articolo.Id == formData.Id).FirstOrDefault();
+                Pizza postToUpdate = db.Pizza.Where(articolo => articolo.Id == formPizza.Id).FirstOrDefault();
 
                 if (postToUpdate != null)
                 {
-                    postToUpdate.Name = formData.Name;
-                    postToUpdate.Description = formData.Description;
-                    postToUpdate.Image = formData.Image;
+                    postToUpdate.Name = formPizza.Name;
+                    postToUpdate.Description = formPizza.Description;
+                    postToUpdate.Image = formPizza.Image;
+                    postToUpdate.Price = formPizza.Price;
+                    postToUpdate.Favorites = formPizza.Favorites;
 
                     db.SaveChanges();
 
@@ -117,6 +121,11 @@ namespace LaMiaPizzeriaF.Controllers
                 }
             }
         }
+
+
+
+
+
 
 
     }
